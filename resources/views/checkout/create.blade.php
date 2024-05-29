@@ -3,7 +3,7 @@
 @section('content')
     <section class="checkout">
         <div class="container">
-            <div class="row text-center pb-70">
+            <div class="text-center row pb-70">
                 <div class="col-lg-12 col-12 header-wrap">
                     <p class="story">
                         YOUR FUTURE CAREER
@@ -33,41 +33,58 @@
                             <form action="{{ route('checkout.store', $camp->id) }}" class="basic-form" method="POST">
                                 @csrf
                                 <div class="mb-4">
-                                    <label  class="form-label">Full Name</label>
-                                    <input name="name" type="text" class="form-control"
+                                    <label class="form-label">Full Name</label>
+                                    <input name="name" type="text"
+                                        class="form-control {{ $errors->has('name') ? 'is_invalid' : '' }}"
                                         aria-describedby="emailHelp" value="{{ Auth::user()->name }}">
+                                    @if ($errors->has('name'))
+                                        <p class="text-danger">{{ $errors->first('name') }}</p>
+                                    @endif
                                 </div>
                                 <div class="mb-4">
-                                    <label  class="form-label">Email Address</label>
-                                    <input name="email" type="email" class="form-control"
+                                    <label class="form-label">Email Address</label>
+                                    <input name="email" type="email"
+                                        class="form-control {{ $errors->has('email') ? 'is_invalid' : '' }}"
                                         aria-describedby="emailHelp" value="{{ Auth::user()->email }}">
+                                    @if ($errors->has('email'))
+                                        <p class="text-danger">{{ $errors->first('email') }}</p>
+                                    @endif
                                 </div>
                                 <div class="mb-4">
-                                    <label  class="form-label">Occupation</label>
-                                    <input name="occupation" type="text" class="form-control"
-                                        aria-describedby="emailHelp" value="{{ Auth::user()->occupation }}">
+                                    <label class="form-label">Occupation</label>
+                                    <input name="occupation" type="text"
+                                        class="form-control {{ $errors->has('occupation') ? 'is_invalid' : '' }}"
+                                        aria-describedby="emailHelp"
+                                        {{-- ?: adalah 'kalau gk ada' --}}
+                                        value="{{ old('occupation') ?: Auth::user()->occupation }}">
+                                    @if ($errors->has('occupation'))
+                                        <p class="text-danger">{{ $errors->first('occupation') }}</p>
+                                    @endif
                                 </div>
                                 <div class="mb-4">
-                                    <label  class="form-label">Card Number</label>
-                                    <input name="card_number" type="number" class="form-control"
-                                        aria-describedby="emailHelp">
+                                    <label class="form-label">Card Number</label>
+                                    <input name="card_number" type="number" class="form-control {{ $errors->has('card_number') ? 'is_invalid' : '' }}"
+                                        aria-describedby="emailHelp" value="{{ old('card_number') ?: ''}}">
+                                    @if ($errors->has('card_number'))
+                                        <p class="text-danger">{{ $errors->first('card_number') }}</p>
+                                    @endif
                                 </div>
                                 <div class="mb-5">
                                     <div class="row">
                                         <div class="col-lg-6 col-12">
-                                            <label  class="form-label">Expired</label>
+                                            <label class="form-label">Expired</label>
                                             <input name="expired" type="month" class="form-control"
-                                                 aria-describedby="emailHelp">
+                                                aria-describedby="emailHelp">
                                         </div>
                                         <div class="col-lg-6 col-12">
-                                            <label  class="form-label">CVC</label>
+                                            <label class="form-label">CVC</label>
                                             <input name="cvc" maxlength="3" type="number" class="form-control"
-                                                 aria-describedby="emailHelp">
+                                                aria-describedby="emailHelp">
                                         </div>
                                     </div>
                                 </div>
                                 <button type="submit" class="w-100 btn btn-primary">Pay Now</button>
-                                <p class="text-center subheader mt-4">
+                                <p class="mt-4 text-center subheader">
                                     <img src="{{ asset(' images/ic_secure.svg') }}" alt=""> Your payment is secure
                                     and
                                     encrypted.

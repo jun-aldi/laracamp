@@ -28,7 +28,7 @@ class CheckoutController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Camp $camp, CheckoutStore $request)
+    public function create(Camp $camp, Request $request)
     {
 
         if ($camp->isRegistered) {
@@ -46,10 +46,10 @@ class CheckoutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Camp $camp)
+    public function store(CheckoutStore $request, Camp $camp)
     {
 
-
+        // return $request->all();
         // mapping request data
         $data = $request->all();
         $data['user_id'] = Auth::id();
