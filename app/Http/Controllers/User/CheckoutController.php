@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Camp;
 use App\Models\Checkout;
 use Illuminate\Http\Request;
+use App\Http\Requests\User\Checkout\Store as CheckoutStore;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -27,7 +28,7 @@ class CheckoutController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Camp $camp, Request $request)
+    public function create(Camp $camp, CheckoutStore $request)
     {
 
         if ($camp->isRegistered) {
