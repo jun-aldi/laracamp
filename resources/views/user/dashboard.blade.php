@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="dashboard my-5">
+    <section class="my-5 dashboard">
         <div class="container">
-            <div class="row text-left">
-                <div class=" col-lg-12 col-12 header-wrap mt-4">
+            <div class="text-left row">
+                <div class="mt-4  col-lg-12 col-12 header-wrap">
                     <p class="story">
                         DASHBOARD
                     </p>
@@ -13,7 +13,8 @@
                     </h2>
                 </div>
             </div>
-            <div class="row my-5">
+            <div class="my-5 row">
+                @include('components.alert')
                 <table class="table">
                     <tbody>
                         @forelse ($checkouts as $checkout)
