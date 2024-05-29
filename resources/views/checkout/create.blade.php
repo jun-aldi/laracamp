@@ -34,7 +34,7 @@
                                 @csrf
                                 <div class="mb-4">
                                     <label class="form-label">Full Name</label>
-                                    <input name="name" type="text"
+                                    <input required name="name" type="text"
                                         class="form-control {{ $errors->has('name') ? 'is_invalid' : '' }}"
                                         aria-describedby="emailHelp" value="{{ Auth::user()->name }}">
                                     @if ($errors->has('name'))
@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label">Email Address</label>
-                                    <input name="email" type="email"
+                                    <input required name="email" type="email"
                                         class="form-control {{ $errors->has('email') ? 'is_invalid' : '' }}"
                                         aria-describedby="emailHelp" value="{{ Auth::user()->email }}">
                                     @if ($errors->has('email'))
@@ -52,10 +52,9 @@
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label">Occupation</label>
-                                    <input name="occupation" type="text"
+                                    <input required name="occupation" type="text"
                                         class="form-control {{ $errors->has('occupation') ? 'is_invalid' : '' }}"
-                                        aria-describedby="emailHelp"
-                                        {{-- ?: adalah 'kalau gk ada' --}}
+                                        aria-describedby="emailHelp" {{-- ?: adalah 'kalau gk ada' --}}
                                         value="{{ old('occupation') ?: Auth::user()->occupation }}">
                                     @if ($errors->has('occupation'))
                                         <p class="text-danger">{{ $errors->first('occupation') }}</p>
@@ -63,8 +62,9 @@
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label">Card Number</label>
-                                    <input name="card_number" type="number" class="form-control {{ $errors->has('card_number') ? 'is_invalid' : '' }}"
-                                        aria-describedby="emailHelp" value="{{ old('card_number') ?: ''}}">
+                                    <input name="card_number" type="number" required
+                                        class="form-control {{ $errors->has('card_number') ? 'is_invalid' : '' }} "
+                                        aria-describedby="emailHelp" value="{{ old('card_number') ?: '' }}">
                                     @if ($errors->has('card_number'))
                                         <p class="text-danger">{{ $errors->first('card_number') }}</p>
                                     @endif
@@ -73,13 +73,19 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-12">
                                             <label class="form-label">Expired</label>
-                                            <input name="expired" type="month" class="form-control"
-                                                aria-describedby="emailHelp">
+                                            <input required name="expired" type="month" class="form-control {{ $errors->has('expired') ? 'is_invalid' : '' }}"
+                                                aria-describedby="emailHelp" value="{{ old('expired') ?: '' }}">
+                                            @if ($errors->has('expired'))
+                                                <p class="text-danger">{{ $errors->first('expired') }}</p>
+                                            @endif
                                         </div>
                                         <div class="col-lg-6 col-12">
                                             <label class="form-label">CVC</label>
-                                            <input name="cvc" maxlength="3" type="number" class="form-control"
-                                                aria-describedby="emailHelp">
+                                            <input required name="cvc" maxlength="3" type="number" class="form-control {{ $errors->has('cvc') ? 'is_invalid' : '' }}"
+                                                aria-describedby="emailHelp" value="{{ old('cvc') ?: '' }}">
+                                                @if ($errors->has('cvc'))
+                                                <p class="text-danger">{{ $errors->first('cvc') }}</p>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
