@@ -7,6 +7,7 @@ use App\Models\Camp;
 use App\Models\Checkout;
 use Illuminate\Http\Request;
 use App\Http\Requests\User\Checkout\Store as CheckoutStore;
+use App\Mail\Checkout\AfterCheckout;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -65,6 +66,10 @@ class CheckoutController extends Controller
 
         // create table checkout
         $checkout = Checkout::create($data);
+
+
+        // sending mail
+        Mail::to(Auth::user()->email)->send(new AfterCheckout($checkout));
 
         return redirect(route('checkout.success'));
 
