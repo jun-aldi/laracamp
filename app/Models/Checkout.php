@@ -20,7 +20,8 @@ class Checkout extends Model
         'is_paid',
     ];
 
-    public function setExpiredAttribute($value){
+    public function setExpiredAttribute($value)
+    {
         $this->attributes['expired'] = date('Y-m-t', strtotime($value));
     }
 
@@ -32,5 +33,10 @@ class Checkout extends Model
     public function Camp(): BelongsTo
     {
         return $this->belongsTo(Camp::class);
+    }
+
+    public function User(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }

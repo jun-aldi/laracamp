@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\User\Checkout\Store as CheckoutStore;
 use App\Mail\Checkout\AfterCheckout;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 
 
@@ -124,5 +125,10 @@ class CheckoutController extends Controller
     public function success()
     {
     return view('checkout.success');
+    }
+
+    public function invoice(Checkout $checkout)
+    {
+        return $checkout;
     }
 }
