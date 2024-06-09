@@ -23,8 +23,8 @@ Route::get(
     [UserController::class, 'login']
 )->middleware('guest')->name('login');
 
-// Route::get('/login/admin', [AuthenticatedSessionController::class, 'create'])
-//     ->middleware('guest')->name('loginn');
+Route::get('/login/admin', [AuthenticatedSessionController::class, 'create'])
+    ->middleware('guest')->name('login.admin');
 
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])
     ->middleware('guest')->name('login');
