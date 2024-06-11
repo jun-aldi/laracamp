@@ -17,11 +17,11 @@ class CampBenefitTableSeeder extends Seeder
         $campBenefits = [
             [
                 'camp_id' => 1,
-                'name' => 'Pro TechStack Kit'
+                'name' => 'Pro Techstack Kit'
             ],
             [
                 'camp_id' => 1,
-                'name' => 'Imac Pro Display'
+                'name' => 'iMac Pro 2021 & Display'
             ],
             [
                 'camp_id' => 1,
@@ -29,15 +29,19 @@ class CampBenefitTableSeeder extends Seeder
             ],
             [
                 'camp_id' => 1,
-                'name' => 'Final Project Certifation'
+                'name' => 'Final Project Certificate'
             ],
             [
                 'camp_id' => 1,
-                'name' => 'Oflline Course Video'
+                'name' => 'Offline Course Videos'
             ],
             [
                 'camp_id' => 1,
-                'name' => 'Futere Job Opoortunity'
+                'name' => 'Future Job Opportinity'
+            ],
+            [
+                'camp_id' => 1,
+                'name' => 'Premium Design Kit'
             ],
             [
                 'camp_id' => 1,
@@ -49,7 +53,7 @@ class CampBenefitTableSeeder extends Seeder
             ],
             [
                 'camp_id' => 2,
-                'name' => 'Final Project Ceritifaction'
+                'name' => 'Final Project Certificate'
             ],
             [
                 'camp_id' => 2,
