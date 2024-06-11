@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RemoveCardNumberAndExpiredAndCvcAndIsPaidInCheckoutTable extends Migration
+class AddDiscountIdAndDiscountPercentageAndTotalOnCheckoutsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,11 @@ class RemoveCardNumberAndExpiredAndCvcAndIsPaidInCheckoutTable extends Migration
     public function up()
     {
         Schema::table('checkouts', function (Blueprint $table) {
-            $table->dropColumn(['card_number', 'expired', 'cvc', 'is_paid']);
+            $table->foreignId('discount_id')->nullable();
+            $table->unsignedInteger('discount_percentage')->nullable();
+            $table->unsignedInteger('total')->default(0);
+
+            $table->foreign('discount_id')->references('id')->on('discounts');
         });
     }
 
@@ -26,10 +30,8 @@ class RemoveCardNumberAndExpiredAndCvcAndIsPaidInCheckoutTable extends Migration
     public function down()
     {
         Schema::table('checkouts', function (Blueprint $table) {
-            $table->string('card_number', 20)->nullable();
-            $table->date('expired')->nullable();
-            $table->string('cvc',3)->nullable();
-            $table->boolean('is_paid')->default(false);
+            $table->dropForeign('checkouts_discount_id_foreign');
+            $table->dropColumn(['discount_id', 'discount_percentage', 'total']);
         });
     }
 }

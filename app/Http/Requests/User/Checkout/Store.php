@@ -3,7 +3,7 @@
 namespace App\Http\Requests\User\Checkout;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
+use Auth;
 
 class Store extends FormRequest
 {
@@ -24,15 +24,13 @@ class Store extends FormRequest
      */
     public function rules()
     {
-        $expiredValidation = date('Y-m', time());
-
         return [
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email,'.Auth::id().',id',
             'occupation' => 'required|string',
             'phone' => 'required|string',
             'address' => 'required|string',
-
+            'discount' => 'nullable|string|exists:discounts,code,deleted_at,NULL'
         ];
     }
 }

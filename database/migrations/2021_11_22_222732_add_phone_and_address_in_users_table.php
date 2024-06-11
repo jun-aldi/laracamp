@@ -15,7 +15,7 @@ class AddPhoneAndAddressInUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('phone', 15)->nullable()->after('occupation');
-            $table->text('address', 15)->nullable()->after('phone');
+            $table->text('address')->nullable()->after('phone');
         });
     }
 
@@ -27,7 +27,7 @@ class AddPhoneAndAddressInUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('phone', 'address');
+            $table->dropColumn(['phone', 'address']);
         });
     }
 }
