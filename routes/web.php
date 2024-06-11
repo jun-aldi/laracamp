@@ -30,6 +30,9 @@ Route::get('/', function () {
 
 
 
+// midtrans route
+Route::get('payment/success', [UserController::class, 'midtransCallback']);
+Route::post('payment/success', [UserController::class, 'midtransCallback']);
 
 
 
