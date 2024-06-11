@@ -1,10 +1,9 @@
 @component('mail::message')
-# Your Transaction has been confirmed
+# Your Transaction Has Been Confirmed
 
-Hi {{ $checkout->User->name }}
-
+Hi {{$checkout->User->name}}
 <br>
-Your Transaction has been confirmed now you can enjoy your benefits of  <b>{{ $checkout->Camp->title }}</b> camp.
+Your transaction has been confirmed, now you can enjoy the benefits of <b>{{$checkout->Camp->title}}</b> camp.
 
 @component('mail::button', ['url' => route('user.dashboard')])
 My Dashboard

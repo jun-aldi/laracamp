@@ -18,24 +18,25 @@ class CampTableSeeder extends Seeder
             [
                 'title' => 'Gila Belajar',
                 'slug' => 'gila-belajar',
-                'price' => '200',
-                'created_at' => date('Y-m-d H:i:s' , time()),
-                'updated_at' => date('Y-m-d H:i:s' , time()),
+                'price' => 280,
+                'created_at' => date('Y-m-d H:i:s', time()),
+                'updated_at' => date('Y-m-d H:i:s', time()),
             ],
             [
                 'title' => 'Baru Mulai',
                 'slug' => 'baru-mulai',
-                'price' => '140',
-                'created_at' => date('Y-m-d H:i:s' , time()),
-                'updated_at' => date('Y-m-d H:i:s' , time()),
+                'price' => 140,
+                'created_at' => date('Y-m-d H:i:s', time()),
+                'updated_at' => date('Y-m-d H:i:s', time()),
             ],
         ];
 
-        // foreach ($camps as $key => $camps) {
-        //     Camp::create($camps);
-        // };
+        // 1st method
+        // foreach ($camps as $key => $camp) {
+        //     Camp::create($camp);
+        // }
 
-
+        // 2nd method
         Camp::insert($camps);
     }
 }
